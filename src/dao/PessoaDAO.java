@@ -39,12 +39,37 @@ public class PessoaDAO {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String endereco = rs.getString("endereco");
-                pessoas.add(new Pessoa(nome, endereco));
+
+                // Certifique-se de usar o construtor correto que inclui o ID
+                Pessoa pessoa = new Pessoa(id, nome, endereco);
+                pessoas.add(pessoa);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return pessoas;
+    }
+
+    // Metodo para atualizar uma pessoa
+    public void atualizarPessoa(int id, String nome, String endereco) {
+        String sql = "UPDATE pessoa SET nome = ?, endereco = ? WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, nome);
+            stmt.setString(2, endereco);
+            stmt.setInt(3, id);
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Pessoa atualizada com sucesso!");
+            } else {
+                System.out.println("Pessoa não encontrada.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -20,4 +20,8 @@ public class PessoaController {
     public List<Pessoa> listarPessoas() {
         return pessoaDAO.listarPessoas();
     }
+
+    public void atualizarPessoa(int id, String nome, String endereco) {
+        pessoaDAO.atualizarPessoa(id, nome, endereco);
+    }
 }

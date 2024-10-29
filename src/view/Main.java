@@ -15,7 +15,8 @@ public class Main {
             System.out.println("\nEscolha uma opção:");
             System.out.println("1. Adicionar pessoa");
             System.out.println("2. Listar pessoas");
-            System.out.println("3. Sair");
+            System.out.println("3. Atualizar pessoa");
+            System.out.println("4. Sair");
             System.out.print("Opção: ");
 
             int opcao = scanner.nextInt();
@@ -35,10 +36,23 @@ public class Main {
                     List<Pessoa> pessoas = pessoaController.listarPessoas();
                     System.out.println("\nLista de Pessoas:");
                     for (Pessoa pessoa : pessoas) {
-                        System.out.println("Nome: " + pessoa.getNome() + ", Endereço: " + pessoa.getEndereco());
+                        System.out.println("ID: " + pessoa.getId() + ", Nome: " + pessoa.getNome() + ", Endereço: " + pessoa.getEndereco());
                     }
                     break;
                 case 3:
+                    System.out.print("Digite o ID da pessoa que deseja atualizar: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine(); // Consumir a quebra de linha
+
+                    System.out.print("Digite o novo nome: ");
+                    String novoNome = scanner.nextLine();
+
+                    System.out.print("Digite o novo endereço: ");
+                    String novoEndereco = scanner.nextLine();
+
+                    pessoaController.atualizarPessoa(id, novoNome, novoEndereco);
+                    break;
+                case 4:
                     System.out.println("Saindo...");
                     scanner.close();
                     return;

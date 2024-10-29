@@ -5,7 +5,14 @@ public class Pessoa {
     private String nome;
     private String endereco;
 
-    // Construtores, getters e setters
+    // Construtor que inclui o campo id
+    public Pessoa(int id, String nome, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    // Construtor sem o campo id (para novos registros)
     public Pessoa(String nome, String endereco) {
         this.nome = nome;
         this.endereco = endereco;
