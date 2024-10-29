@@ -24,4 +24,8 @@ public class PessoaController {
     public void atualizarPessoa(int id, String nome, String endereco) {
         pessoaDAO.atualizarPessoa(id, nome, endereco);
     }
+
+    public void deletarPessoa(int id) {
+        pessoaDAO.deletarPessoa(id);
+    }
 }

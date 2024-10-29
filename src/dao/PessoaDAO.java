@@ -72,4 +72,24 @@ public class PessoaDAO {
             e.printStackTrace();
         }
     }
+
+    // Método para deletar uma pessoa
+    public void deletarPessoa(int id) {
+        String sql = "DELETE FROM pessoa WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            int rowsDeleted = stmt.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Pessoa deletada com sucesso!");
+            } else {
+                System.out.println("Pessoa não encontrada.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

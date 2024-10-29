@@ -16,7 +16,8 @@ public class Main {
             System.out.println("1. Adicionar pessoa");
             System.out.println("2. Listar pessoas");
             System.out.println("3. Atualizar pessoa");
-            System.out.println("4. Sair");
+            System.out.println("4. Deletar pessoa");
+            System.out.println("5. Sair");
             System.out.print("Opção: ");
 
             int opcao = scanner.nextInt();
@@ -41,7 +42,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.print("Digite o ID da pessoa que deseja atualizar: ");
-                    int id = scanner.nextInt();
+                    int idAtualizar = scanner.nextInt();
                     scanner.nextLine(); // Consumir a quebra de linha
 
                     System.out.print("Digite o novo nome: ");
@@ -50,9 +51,16 @@ public class Main {
                     System.out.print("Digite o novo endereço: ");
                     String novoEndereco = scanner.nextLine();
 
-                    pessoaController.atualizarPessoa(id, novoNome, novoEndereco);
+                    pessoaController.atualizarPessoa(idAtualizar, novoNome, novoEndereco);
                     break;
                 case 4:
+                    System.out.print("Digite o ID da pessoa que deseja deletar: ");
+                    int idDeletar = scanner.nextInt();
+                    scanner.nextLine(); // Consumir a quebra de linha
+
+                    pessoaController.deletarPessoa(idDeletar);
+                    break;
+                case 5:
                     System.out.println("Saindo...");
                     scanner.close();
                     return;
